@@ -1,0 +1,22 @@
+input,
+button,
+select,
+textarea {
+    font-family: inherit;
+    color: inherit;
+}
+
+:root {
+    /* Palette */
+    --palette-light: ;
+    --palette-dark: ;
+    --palette-accent: ;
+}
+
+:root {
+    /* Semantic roles */
+    --color-background: var(--palette-light);
+    --color-text: var(--palette-dark);
+    --color-primary: var(--palette-accent);
+}
+
