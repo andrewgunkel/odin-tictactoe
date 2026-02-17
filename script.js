@@ -38,11 +38,21 @@ function ScreenController() {
 
     const boardDiv = document.getElementById("board");
 
+    function render() {
+    const board = game.getBoard();
+    const buttons = boardDiv.querySelectorAll("button");
+
+    buttons.forEach((button, index) => {
+        button.textContent = board[index] ?? "";
+    });
+}
+
     boardDiv.addEventListener("click", function (event) {
         const index = event.target.dataset.index;
         if (index === undefined) return;
 
         game.playRound(Number(index));
+        render();
     });
 }
 
@@ -57,6 +67,7 @@ function Game() {
     const player1 = Player('Player 1', 'X');
     const player2 = Player('Player 2', 'O');
     let currentPlayer = player1;
+    let gameOver = false;
 
     const winningCombinations = [
         [0, 1, 2], // top row
@@ -76,7 +87,8 @@ function Game() {
     }
 
 
-    function playRound(index) {        
+    function playRound(index) {  
+        if (gameOver) return;      
         console.log(index, currentPlayer);
         const validMove = gameboard.placeSymbol(index, currentPlayer.symbol);
 
@@ -90,6 +102,7 @@ function Game() {
                     gameboard.board[a] === gameboard.board[b] && 
                     gameboard.board[a] === gameboard.board[c]) {
                     console.log(`${currentPlayer.name} wins!`);
+                    gameOver = true;
                     return;
                 }
             }
@@ -101,8 +114,10 @@ function Game() {
         }
     }
 
-   
+   function getBoard() {
+    return gameboard.board;
+}
 
-    return { playRound };
+    return { playRound, getBoard };
 }
 ScreenController();
