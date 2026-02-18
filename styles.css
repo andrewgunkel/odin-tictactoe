@@ -31,3 +31,12 @@ textarea {
     font-size: 2rem;
     cursor: pointer;
 }
+
+#game {
+    display: none;
+}
+
+#reset {
+    margin-top: 20px;
+    display: none;
+}
