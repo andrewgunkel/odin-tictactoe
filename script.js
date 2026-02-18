@@ -49,7 +49,10 @@ function ScreenController() {
 		buttons.forEach((button, index) => {
 			button.textContent = board[index] ?? "";
 
-			if (game.getWinner()) {
+			
+		});
+
+        if (game.getWinner()) {
 				statusDiv.textContent = `${game.getWinner().name} wins!`;
 			}
 			else if (game.isGameOver()) {
@@ -59,7 +62,7 @@ function ScreenController() {
 				const currentPlayer = game.getCurrentPlayer();
 				statusDiv.textContent = `${currentPlayer.name}'s turn`;
 			}
-		});
+            
 	}
 
     startButton.addEventListener("click", function () {
@@ -71,7 +74,7 @@ function ScreenController() {
         document.getElementById("game").style.display = "block";
         resetDiv.style.display = "block";  
         setupDiv.style.display = "none";
-        
+
         render();
     });
 
