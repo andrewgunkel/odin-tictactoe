@@ -1,41 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css?family=" rel="stylesheet" type="text/css">
-    <!--<link rel="icon" type="image/svg+xml" href="images/favicon.svg">-->
-    <title></title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="styles.css">
+	<link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&display=swap" rel="stylesheet" type="text/css">
+    <link rel="icon" href="images/favicon.svg" type="image/x-icon" />
+	<title>Tic Tac Toe</title>
 </head>
 <body>
 
-    <div id="setup">
-    <input id="player1Name" placeholder="Player 1 name" />
-    <input id="player2Name" placeholder="Player 2 name" />
-    <button id="startGame">Start Game</button>
-</div>
+	<!-- 
+	================================
+	   SETUP SCREEN
+	================================ 
+	-->
 
-    <div id="game">
-    <h1>Tic Tac Toe</h1>
-    <div id="status"></div>
-        <div id="board">
-            <button data-index="0"></button>
-            <button data-index="1"></button>
-            <button data-index="2"></button>
-            <button data-index="3"></button>
-            <button data-index="4"></button>
-            <button data-index="5"></button>
-            <button data-index="6"></button>
-            <button data-index="7"></button>
-            <button data-index="8"></button>
-        </div>
-    </div>
+	<div id="setup">
+		<h1>Tic Tac Toe</h1>
+		<input id="player1Name" placeholder="Player 1 name" />
+		<input id="player2Name" placeholder="Player 2 name" />
+		<button id="startGame">Start Game</button>
+	</div>
 
-    <div id="reset">
-        <button id="resetGame">Reset Game</button>
-    </div>
 
-    <script src="script.js"></script>
+	<!-- 
+	================================
+	   GAME SCREEN
+	================================ 
+	-->
+
+	<div id="game">
+		<h1>Tic Tac Toe</h1>
+		<div id="status"></div>
+
+		<div id="board">
+			<button data-index="0"></button>
+			<button data-index="1"></button>
+			<button data-index="2"></button>
+			<button data-index="3"></button>
+			<button data-index="4"></button>
+			<button data-index="5"></button>
+			<button data-index="6"></button>
+			<button data-index="7"></button>
+			<button data-index="8"></button>
+		</div>
+	</div>
+
+
+	<!-- 
+	================================
+	   RESET SECTION
+	================================ 
+	-->
+
+	<div id="reset">
+		<button id="resetGame">Reset Game</button>
+	</div>
+
+	<script src="script.js"></script>
 </body>
 </html>

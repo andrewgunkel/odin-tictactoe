@@ -1,42 +1,191 @@
+/* 
+================================
+   BASE RESET
+================================ 
+*/
+
 input,
 button,
 select,
 textarea {
-    font-family: inherit;
-    color: inherit;
+				font-family: inherit;
+				color: inherit;
+}
+
+
+/* 
+================================
+   DESIGN TOKENS
+================================ 
+*/
+
+:root {
+				/* Palette */
+				--palette-light: #83A0A0;
+				--palette-dark: #2B3D41;
+				--palette-accent: #F9B9F2;
+                --palette-accent-light: #BCA0BC;
+				--palette-white: #faeaf8;
 }
 
 :root {
-    /* Palette */
-    --palette-light: ;
-    --palette-dark: ;
-    --palette-accent: ;
+				/* Semantic roles */
+				--color-background: var(--palette-light);
+				--color-text: var(--palette-dark);
+				--color-primary: var(--palette-accent);
 }
 
-:root {
-    /* Semantic roles */
-    --color-background: var(--palette-light);
-    --color-text: var(--palette-dark);
-    --color-primary: var(--palette-accent);
+
+/* 
+================================
+   GLOBAL LAYOUT
+================================ 
+*/
+
+body {
+				background-color: var(--palette-dark);
+				color: var(--palette-accent);
+				font-family: 'Bitcount Grid Double', monospace;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				height: 100vh;
 }
 
-#board {
-    display: grid;
-    grid-template-columns: repeat(3, 100px);
-    gap: 5px;
+h1 {
+				margin-bottom: 20px;
+				color: var(--palette-accent);
+				text-align: center;
+				font-size: 3rem;
 }
 
-#board button {
-    height: 100px;
-    font-size: 2rem;
-    cursor: pointer;
-}
+
+/* 
+================================
+   GAME CONTAINERS
+================================ 
+*/
 
 #game {
-    display: none;
+				display: none;
 }
 
 #reset {
-    margin-top: 20px;
-    display: none;
+				margin-top: 20px;
+				display: none;
+}
+
+
+/* 
+================================
+   FORM CONTROLS
+================================ 
+*/
+
+input {
+				padding: 10px;
+				font-size: 1rem;
+				margin: 5px;
+                color: var(--palette-dark)
+}
+
+button {
+				padding: 10px 20px;
+				font-size: 1rem;
+				cursor: pointer;
+				background-color: var(--palette-accent);
+				border: none;
+				color: var(--palette-dark);
+}
+
+
+/* 
+================================
+   BOARD LAYOUT
+================================ 
+*/
+
+#board {
+				display: grid;
+				grid-template-columns: repeat(3, 100px);
+				gap: 5px;
+				perspective: 800px;
+}
+
+#board button {
+				height: 100px;
+				font-size: 2rem;
+				cursor: pointer;
+}
+
+#board button {
+				background-color: var(--palette-white);
+				color: var(--palette-dark);
+				font-size: 2rem;
+				backface-visibility: hidden;
+				transform-style: preserve-3d;
+}
+
+#board button:hover {
+				background-color: var(--palette-light);
+}
+
+button:hover {
+                background-color: var(--palette-accent-light);
+                transition: background-color 0.4s ease;
+}
+
+/* 
+================================
+   STATUS DISPLAY
+================================ 
+*/
+
+#status {
+				margin-top: 20px;
+				margin-bottom: 20px;
+				font-size: 1.5rem;
+				text-align: center;
+}
+
+
+/* 
+================================
+   GAME STATES
+================================ 
+*/
+
+.cell-disabled {
+				opacity: 0.4;
+				pointer-events: none;
+}
+
+
+/* 
+================================
+   WIN ANIMATION
+================================ 
+*/
+
+@keyframes flip-win {
+				0% {
+								transform: rotateY(0deg);
+				}
+				50% {
+								transform: rotateY(90deg);
+				}
+				100% {
+								transform: rotateY(0deg);
+				}
+}
+
+#board button.cell-win {
+				opacity: 0.8;
+				font-weight: bold;
+				background-color: var(--palette-dark);
+				color: var(--palette-accent);
+				border: 3px solid var(--palette-accent);
+				animation: flip-win 0.6s ease;
+				transform-style: preserve-3d;
 }
